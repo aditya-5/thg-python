@@ -11,7 +11,7 @@ product_dict = {"whey_protein" : 8.99,
                 "sugar_free_syrup" : 6.49, 
                 "sugar_free_syrup" : 6.49,
                 "protein_spread" : 6.99,
-                "protedwfiwdg" : 34534}
+                }
 product_list = list(product_dict)
 cart = {}
 cart_total = 0
@@ -33,10 +33,13 @@ while True:
 	print("F : Checkout")
 	print("C : Cancel\n")
 	print(TRED+ "Basket : ", end="")
-	for value in cart:
-		print("("+str(cart.get(value)) +") "+ value, end=", ")
+	if(len(cart)>0):
+		for value in cart:
+			print("("+str(cart.get(value)) +") "+ value, end=", ")
+	else:
+		print(" No items added")
 	print()
-	print("Cart total : GBP " + str(cart_total)+'\n')
+	print("Cart total : GBP " + str(round(cart_total,2))+'\n')
 	if(err==1):
 		print("That was an invalid input")
 		err = 0
@@ -69,10 +72,13 @@ if cart_total >0 :
 	for value in cart:
 		print("("+str(cart.get(value)) +") "+ value, end=", ")
 	print()
-	print("Please pay GBP "+ str(cart_final)+" to the cashier. Thanks for shopping")
+	print("Discount applied : "+TRED+"15%"+TBLACK)
+	print("Please pay "+TRED+"GBP "+ str(round(cart_final,2))+TBLACK+" to the cashier. Thanks for shopping")
 	print('\n**********************************************************************\n')
 else:
-	print("\n No Items Selected\n")
+	print('\n**********************************************************************')
+	print(TRED+"\n No Items Selected. Please run the order forum again\n"+TBLACK)
+	print('**********************************************************************\n')
 
 
 
