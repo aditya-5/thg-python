@@ -16,8 +16,14 @@ product_list = list(product_dict)
 cart = {}
 cart_total = 0
 err = 0
+
+TGREEN =  '\033[32m'
+TRED =  '\033[91m'
+TBLACK = "\033[30m"
+
+
 while True:
-	print('\n**************************\n')
+	print(TBLACK+'\n**************************\n')
 	print('Product List : \n')
 	serial_no = 1
 	for key in product_dict:
@@ -26,7 +32,7 @@ while True:
 	print('\n**************************\n')
 	print("F : Checkout")
 	print("C : Cancel\n")
-	print("Basket : ", end="")
+	print(TRED+ "Basket : ", end="")
 	for value in cart:
 		print("("+str(cart.get(value)) +") "+ value, end=", ")
 	print()
@@ -34,7 +40,7 @@ while True:
 	if(err==1):
 		print("That was an invalid input")
 		err = 0
-	item_chosen = input("Choose an item from the list above: \n")
+	item_chosen = input(TGREEN+"Choose an item from the list above: \n"+TBLACK)
 	try:
 		item_chosen = item_chosen.strip()
 		if(item_chosen == "f" or item_chosen == "F"):
@@ -50,10 +56,10 @@ while True:
 	except SystemExit:
 		sys.exit()
 	except:
-		print("**********  Invalid Input **********")
+		print(TBLACK+"**********  Invalid Input **********")
 		err = 1
 		continue
-	print("Item chosen : "+ product_list[int(item_chosen)-1])
+	print(TBLACK+"Item chosen : "+ product_list[int(item_chosen)-1])
 
 
 if cart_total >0 :
