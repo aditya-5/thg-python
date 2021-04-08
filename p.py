@@ -1,4 +1,4 @@
-import sys
+import sys as sys
 
 product_dict = {"whey_protein" : 8.99,
 				"protein_bar" :1.50,
@@ -40,13 +40,15 @@ while True:
 		if(item_chosen == "f" or item_chosen == "F"):
 			break
 		if(item_chosen == "c" or item_chosen == "C"):
-			quit()
+			sys.exit()
 		product_name = product_list[int(item_chosen)-1]
 		if product_name in cart.keys():
 			cart[product_name] += 1
 		else:
 			cart[product_name] = 1
 		cart_total += product_dict.get(product_list[int(item_chosen)-1])
+	except SystemExit:
+		sys.exit()
 	except:
 		print("**********  Invalid Input **********")
 		err = 1
